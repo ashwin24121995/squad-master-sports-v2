@@ -44,3 +44,6 @@
 - [x] Database schema (users, matches, players, teams, contests, leaderboard, contact)
 - [x] Backend API routes (matches, players, teams, contests, leaderboard, contact, admin)
 - [x] Vitest tests - 22 tests passing (auth, routes, validation, access control)
+
+## Bug Fixes / Policy Compliance
+- [x] Remove all WhatsApp links and references from the entire website (policy violation)

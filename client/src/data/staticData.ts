@@ -196,7 +196,7 @@ export const faqs: FAQ[] = [
   { question: "Can I join multiple contests for the same match?", answer: "Yes! You can create multiple teams and join different contests for the same match. Each contest has its own leaderboard and rankings." },
   { question: "Is this platform legal in India?", answer: "Yes. Squad Master Sports is a skill-based gaming platform, which is legal in most Indian states. However, users from Andhra Pradesh, Assam, Nagaland, Odisha, Sikkim, and Telangana are restricted from participating due to state-specific regulations." },
   { question: "What is the minimum age to play?", answer: "You must be at least 18 years old to register and use Squad Master Sports. Age verification may be required." },
-  { question: "How do I contact support?", answer: "You can reach us through our Contact page, email us at support@squadmastersports.com, or message us on WhatsApp. Our support team typically responds within 24 hours." },
+  { question: "How do I contact support?", answer: "You can reach us through our Contact page or email us at support@squadmastersports.com. Our support team typically responds within 24 hours." },
   { question: "Can I play on mobile?", answer: "Yes! Squad Master Sports is fully responsive and works perfectly on all devices — mobile phones, tablets, and desktops. No app download is required." },
   { question: "How do I become a better player?", answer: "Check out our How to Play guide and educational resources. Study player form, pitch conditions, and head-to-head records. Practice regularly and learn from the leaderboard toppers' strategies." },
 ];
