@@ -1,14 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   Trophy, Users, BarChart3, Shield, Star, Zap, Target,
   CheckCircle2, ArrowRight, Clock, Award,
   TrendingUp, Sparkles, Play, BookOpen, HeadphonesIcon
 } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PageLayout from "@/components/layout/PageLayout";
 import { getLoginUrl } from "@/const";
+import { faqs } from "@/data/staticData";
+import { HelpCircle, ChevronDown } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -53,6 +56,50 @@ function StumpsSVG({ className }: { className?: string }) {
       <rect x="12" y="18" width="56" height="4" rx="2" fill="#E8C55A" stroke="#D4A843" strokeWidth="0.5"/>
       <rect x="12" y="26" width="56" height="4" rx="2" fill="#E8C55A" stroke="#D4A843" strokeWidth="0.5"/>
     </svg>
+  );
+}
+
+function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.06 }}
+    >
+      <Card className={`border-border/50 transition-all duration-300 ${isOpen ? "shadow-md border-primary/20" : "hover:shadow-sm"}`}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full flex items-center justify-between p-5 text-left"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <HelpCircle className="w-4 h-4 text-primary" />
+            </div>
+            <span className="font-semibold text-foreground text-sm md:text-base" style={{ fontFamily: "var(--font-heading)" }}>
+              {question}
+            </span>
+          </div>
+          <ChevronDown className={`w-5 h-5 text-muted-foreground shrink-0 ml-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+        </button>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="overflow-hidden"
+            >
+              <div className="px-5 pb-5 pt-0 pl-16">
+                <p className="text-muted-foreground text-sm leading-relaxed">{answer}</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Card>
+    </motion.div>
   );
 }
 
@@ -325,6 +372,48 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ─── FAQ Section ─────────────────────────────────────────────── */}
+      <section className="py-16 lg:py-24">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              Got Questions?
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Everything you need to know about Squad Master Sports.
+            </p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-3">
+            {faqs.slice(0, 6).map((faq, i) => (
+              <FAQItem key={i} question={faq.question} answer={faq.answer} index={i} />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-8"
+          >
+            <Link href="/faq">
+              <Button variant="outline" className="rounded-full">
+                View All FAQs
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ─── Entertainment Disclaimer ─────────────────────────────────── */}
       <section className="py-12 bg-muted/30">
