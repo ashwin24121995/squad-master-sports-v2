@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PageLayout from "@/components/layout/PageLayout";
-import { getLoginUrl } from "@/const";
+
 import { faqs } from "@/data/staticData";
 import { HelpCircle, ChevronDown } from "lucide-react";
 
@@ -154,12 +154,12 @@ export default function Home() {
               </motion.p>
 
               <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <a href={getLoginUrl()}>
+                <Link href="/register">
                   <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all text-base font-semibold px-8 h-12 w-full sm:w-auto">
                     Get Started Free
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                </a>
+                </Link>
                 <Link href="/how-to-play">
                   <Button size="lg" variant="outline" className="rounded-full border-white/30 text-white hover:bg-white/10 text-base font-medium px-8 h-12 w-full sm:w-auto bg-transparent">
                     <Play className="w-4 h-4 mr-2" />
@@ -465,12 +465,12 @@ export default function Home() {
               No deposits, no entry fees — just pure cricket fun.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href={getLoginUrl()}>
+              <Link href="/register">
                 <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90 shadow-xl text-base font-semibold px-10 h-13 w-full sm:w-auto">
                   Start Playing Free
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-              </a>
+              </Link>
               <Link href="/how-to-play">
                 <Button size="lg" variant="outline" className="rounded-full border-white/30 text-white hover:bg-white/10 text-base px-8 h-13 w-full sm:w-auto bg-transparent">
                   Learn More

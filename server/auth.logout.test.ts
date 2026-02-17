@@ -8,21 +8,17 @@ type CookieCall = {
   options: Record<string, unknown>;
 };
 
-type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
-
 function createAuthContext(): { ctx: TrpcContext; clearedCookies: CookieCall[] } {
   const clearedCookies: CookieCall[] = [];
 
-  const user: AuthenticatedUser = {
+  const user = {
     id: 1,
-    openId: "sample-user",
     email: "sample@example.com",
     name: "Sample User",
-    loginMethod: "manus",
-    role: "user",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    lastSignedIn: new Date(),
+    role: "user" as const,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    lastSignedIn: new Date().toISOString(),
   };
 
   const ctx: TrpcContext = {

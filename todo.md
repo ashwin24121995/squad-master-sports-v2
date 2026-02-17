@@ -62,3 +62,11 @@
 - [x] Rewrite About page with "What We Offer", "Who We Are", "User-Friendly", "Easy & Transparent" sections
 - [x] Add "What We Offer" section to the Home page
 - [x] Restore Home page to the previous good version (before What We Offer and FAQ additions)
+- [x] Remove all Manus OAuth dependencies and replace with custom email/password auth
+- [x] Remove Manus managed database and replace with file-based TXT/JSON storage
+- [x] Remove all Manus built-in APIs (LLM, storage, notifications)
+- [x] Create file-based data storage system (users.json, teams.json, contacts.json, etc.)
+- [x] Update all backend routers to use file-based storage
+- [x] Update frontend auth flow to use custom login/register forms
+- [x] Remove all Manus references from code, env, and config
+- [x] Make website fully independent and deployable anywhere (Vercel, etc.)

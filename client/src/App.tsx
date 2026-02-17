@@ -22,6 +22,8 @@ import Privacy from "./pages/Privacy";
 import FairPlay from "./pages/FairPlay";
 import ResponsibleGaming from "./pages/ResponsibleGaming";
 import Refund from "./pages/Refund";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function Router() {
   return (
@@ -42,6 +44,8 @@ function Router() {
       <Route path="/fair-play" component={FairPlay} />
       <Route path="/responsible-gaming" component={ResponsibleGaming} />
       <Route path="/refund" component={Refund} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

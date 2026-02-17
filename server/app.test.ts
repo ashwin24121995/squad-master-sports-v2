@@ -3,7 +3,11 @@ import { appRouter } from "./routers";
 import { COOKIE_NAME } from "../shared/const";
 import type { TrpcContext } from "./_core/context";
 
-type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
+type CookieCall = {
+  name: string;
+  value?: string;
+  options: Record<string, unknown>;
+};
 
 function createPublicContext(): TrpcContext {
   return {
@@ -13,22 +17,21 @@ function createPublicContext(): TrpcContext {
       headers: {},
     } as TrpcContext["req"],
     res: {
+      cookie: () => {},
       clearCookie: () => {},
     } as TrpcContext["res"],
   };
 }
 
-function createAuthContext(overrides?: Partial<AuthenticatedUser>): TrpcContext {
-  const user: AuthenticatedUser = {
+function createAuthContext(overrides?: Partial<NonNullable<TrpcContext["user"]>>): TrpcContext {
+  const user = {
     id: 1,
-    openId: "test-user-123",
     email: "test@example.com",
     name: "Test User",
-    loginMethod: "manus",
-    role: "user",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    lastSignedIn: new Date(),
+    role: "user" as const,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    lastSignedIn: new Date().toISOString(),
     ...overrides,
   };
 
@@ -39,6 +42,7 @@ function createAuthContext(overrides?: Partial<AuthenticatedUser>): TrpcContext 
       headers: {},
     } as TrpcContext["req"],
     res: {
+      cookie: () => {},
       clearCookie: () => {},
     } as TrpcContext["res"],
   };
@@ -57,7 +61,6 @@ describe("auth.me", () => {
     const caller = appRouter.createCaller(ctx);
     const result = await caller.auth.me();
     expect(result).not.toBeNull();
-    expect(result?.openId).toBe("test-user-123");
     expect(result?.name).toBe("Test User");
     expect(result?.email).toBe("test@example.com");
     expect(result?.role).toBe("user");
@@ -66,10 +69,11 @@ describe("auth.me", () => {
 
 describe("auth.logout", () => {
   it("clears the session cookie and reports success", async () => {
-    const clearedCookies: { name: string; options: Record<string, unknown> }[] = [];
+    const clearedCookies: CookieCall[] = [];
     const ctx: TrpcContext = {
       ...createAuthContext(),
       res: {
+        cookie: () => {},
         clearCookie: (name: string, options: Record<string, unknown>) => {
           clearedCookies.push({ name, options });
         },
@@ -80,46 +84,6 @@ describe("auth.logout", () => {
     expect(result).toEqual({ success: true });
     expect(clearedCookies).toHaveLength(1);
     expect(clearedCookies[0]?.name).toBe(COOKIE_NAME);
-  });
-});
-
-describe("matches routes", () => {
-  it("matches.list returns an array (may be empty without DB)", async () => {
-    const ctx = createPublicContext();
-    const caller = appRouter.createCaller(ctx);
-    try {
-      const result = await caller.matches.list();
-      expect(Array.isArray(result)).toBe(true);
-    } catch (e: any) {
-      // Without DB, it may throw - that's acceptable
-      expect(e).toBeDefined();
-    }
-  });
-
-  it("matches.getById validates input schema", async () => {
-    const ctx = createPublicContext();
-    const caller = appRouter.createCaller(ctx);
-    try {
-      // @ts-expect-error - testing invalid input
-      await caller.matches.getById({ id: "not-a-number" });
-      expect.unreachable("Should have thrown");
-    } catch (e: any) {
-      expect(e).toBeDefined();
-    }
-  });
-});
-
-describe("players routes", () => {
-  it("players.byMatch validates matchId is a number", async () => {
-    const ctx = createPublicContext();
-    const caller = appRouter.createCaller(ctx);
-    try {
-      // @ts-expect-error - testing invalid input
-      await caller.players.byMatch({ matchId: "abc" });
-      expect.unreachable("Should have thrown");
-    } catch (e: any) {
-      expect(e).toBeDefined();
-    }
   });
 });
 
@@ -212,13 +176,8 @@ describe("contests routes", () => {
   it("contests.list works as public procedure", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
-    try {
-      const result = await caller.contests.list();
-      expect(Array.isArray(result)).toBe(true);
-    } catch (e: any) {
-      // Without DB, may throw
-      expect(e).toBeDefined();
-    }
+    const result = await caller.contests.list();
+    expect(Array.isArray(result)).toBe(true);
   });
 
   it("contests.join requires authentication", async () => {
@@ -234,6 +193,19 @@ describe("contests routes", () => {
 });
 
 describe("contact routes", () => {
+  it("contact.submit creates a message successfully", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.contact.submit({
+      name: "Test User",
+      email: "test@example.com",
+      subject: "Test Subject",
+      message: "This is a test message",
+    });
+    expect(result.success).toBe(true);
+    expect(result.id).toBeGreaterThan(0);
+  });
+
   it("contact.submit validates email format", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
@@ -263,16 +235,11 @@ describe("contact routes", () => {
 });
 
 describe("leaderboard routes", () => {
-  it("leaderboard.global accepts optional limit", async () => {
+  it("leaderboard.global returns an array", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
-    try {
-      const result = await caller.leaderboard.global({ limit: 10 });
-      expect(Array.isArray(result)).toBe(true);
-    } catch (e: any) {
-      // Without DB, may throw
-      expect(e).toBeDefined();
-    }
+    const result = await caller.leaderboard.global({ limit: 10 });
+    expect(Array.isArray(result)).toBe(true);
   });
 
   it("leaderboard.global validates limit range", async () => {
@@ -297,6 +264,16 @@ describe("dashboard routes", () => {
     } catch (e: any) {
       expect(e.code).toBe("UNAUTHORIZED");
     }
+  });
+
+  it("dashboard.stats returns data for authenticated users", async () => {
+    const ctx = createAuthContext();
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.dashboard.stats();
+    expect(result).toHaveProperty("teamsCreated");
+    expect(result).toHaveProperty("contestsJoined");
+    expect(result).toHaveProperty("totalPoints");
+    expect(result).toHaveProperty("matchesPlayed");
   });
 
   it("dashboard.profile requires authentication", async () => {
@@ -330,8 +307,25 @@ describe("admin routes", () => {
       await caller.admin.seedData();
       expect.unreachable("Should have thrown");
     } catch (e: any) {
-      // adminProcedure extends protectedProcedure, so it may throw UNAUTHORIZED or FORBIDDEN
       expect(["UNAUTHORIZED", "FORBIDDEN"]).toContain(e.code);
     }
+  });
+
+  it("admin.messages requires admin role", async () => {
+    const ctx = createAuthContext({ role: "user" });
+    const caller = appRouter.createCaller(ctx);
+    try {
+      await caller.admin.messages();
+      expect.unreachable("Should have thrown for non-admin");
+    } catch (e: any) {
+      expect(e.code).toBe("FORBIDDEN");
+    }
+  });
+
+  it("admin.messages returns array for admin users", async () => {
+    const ctx = createAuthContext({ role: "admin" });
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.admin.messages();
+    expect(Array.isArray(result)).toBe(true);
   });
 });

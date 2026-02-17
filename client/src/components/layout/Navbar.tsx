@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -26,11 +25,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663073602365/eJTPnZspKSGbPdTD.png"
-              alt="Squad Master Sports"
-              className="w-10 h-10 rounded-lg object-contain"
-            />
+            <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center shadow-md">
+              <Trophy className="w-5 h-5 text-white" />
+            </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold leading-tight tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
                 Squad Master
@@ -79,16 +76,16 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <a href={getLoginUrl()}>
+                <Link href="/login">
                   <Button variant="outline" size="sm" className="rounded-full">
                     Sign In
                   </Button>
-                </a>
-                <a href={getLoginUrl()}>
+                </Link>
+                <Link href="/register">
                   <Button size="sm" className="rounded-full gradient-primary border-0 text-white shadow-md hover:shadow-lg transition-shadow">
                     Get Started Free
                   </Button>
-                </a>
+                </Link>
               </div>
             )}
           </div>
@@ -152,16 +149,16 @@ export default function Navbar() {
                   </>
                 ) : (
                   <div className="flex gap-2 px-4">
-                    <a href={getLoginUrl()} className="flex-1">
-                      <Button variant="outline" size="sm" className="w-full rounded-full">
+                    <Link href="/login" className="flex-1">
+                      <Button variant="outline" size="sm" className="w-full rounded-full" onClick={() => setMobileOpen(false)}>
                         Sign In
                       </Button>
-                    </a>
-                    <a href={getLoginUrl()} className="flex-1">
-                      <Button size="sm" className="w-full rounded-full gradient-primary border-0 text-white">
+                    </Link>
+                    <Link href="/register" className="flex-1">
+                      <Button size="sm" className="w-full rounded-full gradient-primary border-0 text-white" onClick={() => setMobileOpen(false)}>
                         Get Started
                       </Button>
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>

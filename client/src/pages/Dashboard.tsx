@@ -7,7 +7,6 @@ import { Progress } from "@/components/ui/progress";
 import PageLayout from "@/components/layout/PageLayout";
 import AuthGuard from "@/components/AuthGuard";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
 
 const demoStats = {
   totalMatches: 24,

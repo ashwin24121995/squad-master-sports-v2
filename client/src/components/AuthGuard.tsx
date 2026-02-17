@@ -1,8 +1,8 @@
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Lock, Trophy, ArrowRight, Loader2 } from "lucide-react";
+import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { ReactNode } from "react";
 
@@ -85,23 +85,23 @@ export default function AuthGuard({
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href={getLoginUrl()}>
+              <Link href="/login">
                 <Button
                   size="lg"
                   className="w-full sm:w-auto rounded-full gradient-primary border-0 text-white shadow-md hover:shadow-lg transition-shadow"
                 >
-                  Sign In Free <ArrowRight className="w-4 h-4 ml-2" />
+                  Sign In <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-              </a>
-              <a href="/">
+              </Link>
+              <Link href="/register">
                 <Button
                   size="lg"
                   variant="outline"
                   className="w-full sm:w-auto rounded-full"
                 >
-                  Back to Home
+                  Create Account
                 </Button>
-              </a>
+              </Link>
             </div>
 
             <p className="text-xs text-muted-foreground mt-6">

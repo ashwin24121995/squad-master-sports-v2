@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Trophy } from "lucide-react";
 
 const footerLinks = {
   platform: [
@@ -34,11 +34,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663073602365/eJTPnZspKSGbPdTD.png"
-                alt="Squad Master Sports"
-                className="w-10 h-10 rounded-lg object-contain"
-              />
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-md">
+                <Trophy className="w-5 h-5 text-white" />
+              </div>
               <div className="flex flex-col">
                 <span className="text-lg font-bold leading-tight text-white" style={{ fontFamily: "var(--font-heading)" }}>
                   Squad Master
