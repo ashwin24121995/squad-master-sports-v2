@@ -59,3 +59,5 @@
 - [x] Remove match section from Home page — no match data visible without login
 - [x] Create professional logo matching the website's dark blue-gold theme and set as website logo
 - [x] Add FAQ section to the Home page
+- [x] Rewrite About page with "What We Offer", "Who We Are", "User-Friendly", "Easy & Transparent" sections
+- [x] Add "What We Offer" section to the Home page
