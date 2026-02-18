@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { Zap, Target, Shield, Crown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PageLayout from "@/components/layout/PageLayout";
 import { scoringRules } from "@/data/staticData";
@@ -69,6 +71,22 @@ export default function Scoring() {
               <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />Economy rate bonuses apply only to bowlers who bowl a minimum of 2 overs.</li>
             </ul>
           </motion.div>
+
+          {/* Internal Links for SEO */}
+          <div className="mt-10 text-center">
+            <p className="text-muted-foreground mb-4">Ready to put your scoring knowledge to the test?</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/how-to-play">
+                <Button variant="outline" size="sm">How to Play</Button>
+              </Link>
+              <Link href="/matches">
+                <Button variant="outline" size="sm">Browse Matches</Button>
+              </Link>
+              <Link href="/contests">
+                <Button variant="outline" size="sm">Join Contests</Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </PageLayout>

@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/layout/PageLayout";
 
@@ -95,6 +97,25 @@ export default function Privacy() {
             <div>
               <h2 className="text-xl font-bold text-foreground mb-3" style={{ fontFamily: "var(--font-heading)" }}>10. Changes to This Policy</h2>
               <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. Your continued use of the Platform after any changes constitutes acceptance of the updated policy.</p>
+            </div>
+
+            {/* Internal Links for SEO */}
+            <div className="p-6 rounded-xl bg-primary/5 border border-primary/10">
+              <p className="text-sm text-muted-foreground mb-3">Related Pages:</p>
+              <div className="flex flex-wrap gap-2">
+                <Link href="/terms">
+                  <Button variant="outline" size="sm">Terms & Conditions</Button>
+                </Link>
+                <Link href="/refund">
+                  <Button variant="outline" size="sm">Refund Policy</Button>
+                </Link>
+                <Link href="/responsible-gaming">
+                  <Button variant="outline" size="sm">Responsible Gaming</Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" size="sm">Contact Us</Button>
+                </Link>
+              </div>
             </div>
 
             <div>

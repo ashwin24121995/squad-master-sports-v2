@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/layout/PageLayout";
 
 export default function Terms() {
@@ -91,6 +93,25 @@ export default function Terms() {
               <div>
                 <h2 className="text-xl font-bold text-foreground mb-3" style={{ fontFamily: "var(--font-heading)" }}>11. Governing Law</h2>
                 <p>These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts in Mumbai, Maharashtra, India.</p>
+              </div>
+
+              {/* Internal Links for SEO */}
+              <div className="p-6 rounded-xl bg-primary/5 border border-primary/10">
+                <p className="text-sm text-muted-foreground mb-3">Related Pages:</p>
+                <div className="flex flex-wrap gap-2">
+                  <Link href="/privacy">
+                    <Button variant="outline" size="sm">Privacy Policy</Button>
+                  </Link>
+                  <Link href="/refund">
+                    <Button variant="outline" size="sm">Refund Policy</Button>
+                  </Link>
+                  <Link href="/fair-play">
+                    <Button variant="outline" size="sm">Fair Play Policy</Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button variant="outline" size="sm">Contact Us</Button>
+                  </Link>
+                </div>
               </div>
 
               <div>

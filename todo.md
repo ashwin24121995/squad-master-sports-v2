@@ -81,3 +81,5 @@
 - [x] Remove Dashboard link from footer
 - [x] Review and remove all brand names, celebrity names, and external references from website content
 - [x] Review entire website for clean behavior - no cloaking, deceptive practices, or hidden functionality
+- [x] Verify every page is perfectly crawlable by bots with proper meta tags and content structure
+- [x] Add internal links to 8 pages (Contests, Leaderboard, Scoring, Terms, Privacy, Fair Play, Responsible Gaming, Refund) to improve crawlability

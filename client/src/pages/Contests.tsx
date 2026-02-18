@@ -128,6 +128,22 @@ export default function Contests() {
               })}
             </div>
           )}
+
+          {/* Internal Links for SEO */}
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-4">New to contests? Learn how to play and start competing!</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/how-to-play">
+                <Button variant="outline" size="sm">How to Play</Button>
+              </Link>
+              <Link href="/matches">
+                <Button variant="outline" size="sm">Browse Matches</Button>
+              </Link>
+              <Link href="/scoring">
+                <Button variant="outline" size="sm">Scoring Rules</Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </PageLayout>

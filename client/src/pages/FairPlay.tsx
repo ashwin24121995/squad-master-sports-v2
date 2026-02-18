@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Shield, AlertTriangle, Eye, Ban, CheckCircle2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -78,6 +80,22 @@ export default function FairPlay() {
               <div>
                 <h2 className="text-xl font-bold text-foreground mb-3" style={{ fontFamily: "var(--font-heading)" }}>Reporting Violations</h2>
                 <p>If you suspect any user of violating our Fair Play Policy, please report it to us at <strong className="text-foreground">support@squadmastersports.com</strong>. All reports are investigated confidentially, and we take appropriate action based on our findings.</p>
+              </div>
+
+              {/* Internal Links for SEO */}
+              <div className="p-6 rounded-xl bg-primary/5 border border-primary/10 mt-8">
+                <p className="text-sm text-muted-foreground mb-3">Related Pages:</p>
+                <div className="flex flex-wrap gap-2">
+                  <Link href="/terms">
+                    <Button variant="outline" size="sm">Terms & Conditions</Button>
+                  </Link>
+                  <Link href="/responsible-gaming">
+                    <Button variant="outline" size="sm">Responsible Gaming</Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button variant="outline" size="sm">Contact Us</Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>

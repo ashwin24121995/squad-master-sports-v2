@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { Trophy, Medal, Crown, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PageLayout from "@/components/layout/PageLayout";
 import AuthGuard from "@/components/AuthGuard";
@@ -104,6 +106,22 @@ export default function Leaderboard() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Internal Links for SEO */}
+          <div className="mt-8 text-center">
+            <p className="text-muted-foreground mb-4">Want to climb the leaderboard? Join contests and build winning teams!</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/contests">
+                <Button variant="outline" size="sm">Join Contests</Button>
+              </Link>
+              <Link href="/dashboard">
+                <Button variant="outline" size="sm">View Dashboard</Button>
+              </Link>
+              <Link href="/how-to-play">
+                <Button variant="outline" size="sm">How to Play</Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </PageLayout>

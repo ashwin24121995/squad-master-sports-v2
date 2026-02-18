@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Heart, Clock, Shield, BookOpen, Users, AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -75,6 +77,22 @@ export default function ResponsibleGaming() {
                     <h3 className="text-base font-semibold text-amber-900 mb-1" style={{ fontFamily: "var(--font-heading)" }}>Need Help?</h3>
                     <p className="text-sm text-amber-800">If you have any concerns about your usage of the platform, please reach out to us. You can contact us at support@squadmastersports.com for guidance and support.</p>
                   </div>
+                </div>
+              </div>
+
+              {/* Internal Links for SEO */}
+              <div className="p-6 rounded-xl bg-primary/5 border border-primary/10 mt-8">
+                <p className="text-sm text-muted-foreground mb-3">Need help or have questions?</p>
+                <div className="flex flex-wrap gap-2">
+                  <Link href="/fair-play">
+                    <Button variant="outline" size="sm">Fair Play Policy</Button>
+                  </Link>
+                  <Link href="/terms">
+                    <Button variant="outline" size="sm">Terms & Conditions</Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button variant="outline" size="sm">Contact Support</Button>
+                  </Link>
                 </div>
               </div>
             </div>

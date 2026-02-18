@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/layout/PageLayout";
 
@@ -41,6 +43,22 @@ export default function Refund() {
                 <li>Your teams, contest history, and leaderboard rankings will be removed.</li>
                 <li>This action is irreversible — once cancelled, your data cannot be recovered.</li>
               </ul>
+            </div>
+
+            {/* Internal Links for SEO */}
+            <div className="p-6 rounded-xl bg-primary/5 border border-primary/10">
+              <p className="text-sm text-muted-foreground mb-3">Related Pages:</p>
+              <div className="flex flex-wrap gap-2">
+                <Link href="/terms">
+                  <Button variant="outline" size="sm">Terms & Conditions</Button>
+                </Link>
+                <Link href="/privacy">
+                  <Button variant="outline" size="sm">Privacy Policy</Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" size="sm">Contact Us</Button>
+                </Link>
+              </div>
             </div>
 
             <div>
