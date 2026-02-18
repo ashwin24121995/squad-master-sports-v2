@@ -75,4 +75,4 @@
 - [x] Write comprehensive README.md with Vercel deployment instructions
 - [x] Ensure project is fully Vercel-compatible (vercel.json created)
 - [x] Fix vercel.json to resolve NOT_FOUND deployment error (set framework to vite, simplify rewrites, remove legacy config)
-- [ ] Fix api/index.ts to serve static files for Vercel deployment
+- [x] Fix api/index.ts to serve static files for Vercel deployment
