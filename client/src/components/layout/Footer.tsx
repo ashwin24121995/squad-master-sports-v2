@@ -7,7 +7,6 @@ const footerLinks = {
     { label: "Matches", href: "/matches" },
     { label: "Contests", href: "/contests" },
     { label: "Leaderboard", href: "/leaderboard" },
-    { label: "Dashboard", href: "/dashboard" },
   ],
   learn: [
     { label: "How to Play", href: "/how-to-play" },
