@@ -1,4 +1,4 @@
-# Squad Master Sports
+# Play By Stats
 
 **India's Free Cricket Entertainment Platform** — a fully independent, production-ready web application for cricket enthusiasts. Build teams, join contests, climb leaderboards, and enjoy the game. 100% free, for entertainment purposes only.
 
@@ -25,7 +25,7 @@
 
 ## Overview
 
-Squad Master Sports is a cricket entertainment platform where users can:
+Play By Stats is a cricket entertainment platform where users can:
 
 - Browse upcoming, live, and completed cricket matches
 - Build teams of 11 players within a 100-credit budget
@@ -56,7 +56,7 @@ The platform uses **no external APIs or databases** — all data is stored in lo
 ## Project Structure
 
 ```
-squad-master-sports/
+play-by-stats/
 ├── api/                       # Vercel serverless function entry
 │   └── index.ts               # Express app exported for Vercel
 ├── client/                    # Frontend (React + Vite)
@@ -211,7 +211,7 @@ All API routes are served under `/api/trpc` using tRPC.
 
 | Variable       | Required | Default                              | Description                |
 |----------------|:--------:|--------------------------------------|----------------------------|
-| `JWT_SECRET`   | Yes      | `squad-master-sports-secret-key-2026`| Secret key for JWT signing |
+| `JWT_SECRET`   | Yes      | `play-by-stats-secret-key-2026`| Secret key for JWT signing |
 | `PORT`         | No       | `3000`                               | Server port                |
 | `NODE_ENV`     | No       | `development`                        | Environment mode           |
 
@@ -229,8 +229,8 @@ All API routes are served under `/api/trpc` using tRPC.
 
 ```bash
 # Clone the repository
-git clone https://github.com/ashwin24121995/squadmaster.git
-cd squadmaster
+git clone https://github.com/ashwin24121995/squad-master-sports-v2.git
+cd squad-master-sports-v2
 
 # Install dependencies
 pnpm install
@@ -269,8 +269,8 @@ This project is configured for Vercel with a **hybrid architecture**:
 ```bash
 git init
 git add .
-git commit -m "Initial commit - Squad Master Sports"
-git remote add origin https://github.com/YOUR_USERNAME/squadmaster.git
+git commit -m "Initial commit - Play By Stats"
+git remote add origin https://github.com/YOUR_USERNAME/play-by-stats.git
 git push -u origin main
 ```
 
@@ -278,7 +278,7 @@ git push -u origin main
 
 1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
 2. Click **"Add New Project"**
-3. Import your **squadmaster** repository
+3. Import your **play-by-stats** repository
 4. Vercel will auto-detect the settings from `vercel.json`. If not, configure manually:
 
 | Setting              | Value              |
@@ -309,7 +309,7 @@ Your site will be live at `https://your-project.vercel.app`.
 ### Step 5: Custom Domain
 
 1. In Vercel → Project Settings → Domains
-2. Add `squadmastersports.com`
+2. Add `playbystats.com`
 3. Update your domain's DNS records as instructed by Vercel:
    - **A Record:** `76.76.21.21`
    - **CNAME:** `cname.vercel-dns.com`

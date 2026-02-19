@@ -1,4 +1,4 @@
-# Squad Master Sports - Project TODO
+# Play By Stats - Project TODO
 
 ## Static Data & Types
 - [x] Static match data, player data, contest data, leaderboard data
@@ -93,3 +93,7 @@
 - [x] Update logo in header, footer, and favicon
 - [x] Create new logo with dark colors visible on white header background
 - [x] Update logo in header, footer, and favicon
+- [x] Convert all PNG logos to WebP format
+- [x] Move logos to project public folder (not Manus CDN)
+- [x] Update all logo references to use local WebP files
+- [x] Verify all brand names are "Play By Stats" everywhere (no old brand references)
