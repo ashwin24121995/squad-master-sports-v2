@@ -99,3 +99,5 @@
 - [x] Verify all brand names are "Play By Stats" everywhere (no old brand references)
 - [x] Search and remove all remaining manuscdn.com references from the project
 - [x] Remove 100% of all Manus references from codebase (code, comments, env, config)
+- [x] Create new GitHub repository playbystats2 (user renamed it)
+- [x] Update all repository references in README and documentation

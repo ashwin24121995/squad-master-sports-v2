@@ -229,8 +229,8 @@ All API routes are served under `/api/trpc` using tRPC.
 
 ```bash
 # Clone the repository
-git clone https://github.com/ashwin24121995/squad-master-sports-v2.git
-cd squad-master-sports-v2
+git clone https://github.com/ashwin24121995/playbystats2.git
+cd playbystats2
 
 # Install dependencies
 pnpm install
