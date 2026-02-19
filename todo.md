@@ -97,3 +97,5 @@
 - [x] Move logos to project public folder (not Manus CDN)
 - [x] Update all logo references to use local WebP files
 - [x] Verify all brand names are "Play By Stats" everywhere (no old brand references)
+- [x] Search and remove all remaining manuscdn.com references from the project
+- [x] Remove 100% of all Manus references from codebase (code, comments, env, config)

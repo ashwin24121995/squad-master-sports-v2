@@ -1,7 +1,7 @@
 // ─── SDK Stub ──────────────────────────────────────────────────────────────
-// This file is a minimal stub. The original Manus OAuth SDK has been removed.
+// This file is a minimal stub. OAuth SDK functionality has been removed.
 // Authentication is now handled via custom JWT-based auth in context.ts and routers.ts.
 
-export class ManusSDK {
+export class AuthSDK {
   // Stub — no longer used
 }

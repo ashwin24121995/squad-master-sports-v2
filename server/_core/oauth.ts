@@ -1,6 +1,7 @@
-// ─── OAuth Stub ────────────────────────────────────────────────────────────
-// The original Manus OAuth flow has been removed.
-// Authentication is now handled via custom email/password auth in routers.ts.
+// ─── OAuth Stub ──────────────────────────────────────────────────────
+// STUB FILE
+// OAuth functionality has been replaced with custom email/password authentication.
+// Authentication is now handled in routers.ts.
 // This file is kept as a stub for structural compatibility.
 
 import type { Express } from "express";
