@@ -110,3 +110,13 @@
 - [x] Move all images to assets/images folder in public directory
 - [x] Update all image references to use local assets (no CDN links)
 - [x] Configure git to use StrikePlay as commit author name
+
+## Google Ads Compliance (URGENT)
+- [x] Create Terms of Service page
+- [x] Create Privacy Policy page
+- [x] Create Disclaimer page (entertainment only, no real money)
+- [x] Create About Us page with contact information
+- [x] Add age verification (18+) modal on first visit
+- [x] Review all content and remove gambling language
+- [x] Add contact information in footer
+- [x] Add "Entertainment Only" disclaimers throughout site

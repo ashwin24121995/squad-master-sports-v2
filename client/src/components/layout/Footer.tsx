@@ -16,11 +16,11 @@ const footerLinks = {
     { label: "Contact Us", href: "/contact" },
   ],
   legal: [
-    { label: "Terms & Conditions", href: "/terms" },
-    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "About Us", href: "/about-us" },
     { label: "Fair Play Policy", href: "/fair-play" },
     { label: "Responsible Play", href: "/responsible-gaming" },
-    { label: "Refund Policy", href: "/refund" },
   ],
 };
 

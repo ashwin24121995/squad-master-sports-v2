@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import AgeVerificationModal from "./components/AgeVerificationModal";
 
 // Pages
 import Home from "./pages/Home";
@@ -19,6 +20,9 @@ import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import AboutUs from "./pages/AboutUs";
 import FairPlay from "./pages/FairPlay";
 import ResponsibleGaming from "./pages/ResponsibleGaming";
 import Refund from "./pages/Refund";
@@ -41,6 +45,9 @@ function Router() {
       <Route path="/faq" component={FAQ} />
       <Route path="/terms" component={Terms} />
       <Route path="/privacy" component={Privacy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/about-us" component={AboutUs} />
       <Route path="/fair-play" component={FairPlay} />
       <Route path="/responsible-gaming" component={ResponsibleGaming} />
       <Route path="/refund" component={Refund} />
@@ -58,6 +65,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <AgeVerificationModal />
           <Router />
         </TooltipProvider>
       </ThemeProvider>
