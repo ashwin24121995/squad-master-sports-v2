@@ -5,6 +5,7 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc";
 import PageLayout from "@/components/layout/PageLayout";
+import AgeVerificationModal from "@/components/AgeVerificationModal";
 
 export default function Login() {
   const [, navigate] = useLocation();
@@ -32,6 +33,7 @@ export default function Login() {
 
   return (
     <PageLayout>
+      <AgeVerificationModal />
       <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

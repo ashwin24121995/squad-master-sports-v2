@@ -120,3 +120,4 @@
 - [x] Review all content and remove gambling language
 - [x] Add contact information in footer
 - [x] Add "Entertainment Only" disclaimers throughout site
+- [x] Move age verification modal from home page to login page only
